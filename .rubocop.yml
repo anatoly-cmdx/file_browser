@@ -1,0 +1,37 @@
+require: rubocop-rspec
+
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'log/**/*'
+    - 'public/**/*'
+    - 'spec/rails_helper.rb'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - Guardfile
+    - Gemfile
+    - app/models/ability.rb
+  DisplayCopNames: true
+
+Style/BlockComments:
+  Exclude:
+    - 'spec/spec_helper.rb'
+
+Rails:
+  Enabled: true
+
+# Github's code views fit 101 character without horizontal scrolling
+Metrics/LineLength:
+  Max: 101
+
+# Half-screen
+Metrics/MethodLength:
+  Max: 28
+
+Metrics/AbcSize:
+  Max: 30
+
+Style/Documentation:
+  Enabled: false
