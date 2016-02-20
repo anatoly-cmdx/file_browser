@@ -19,8 +19,21 @@ Style/BlockComments:
   Exclude:
     - 'spec/spec_helper.rb'
 
-Rails:
-  Enabled: true
+Style/BlockDelimiters:
+  Enabled: false
+  StyleGuide: http://relaxed.ruby.style/#styleblockdelimiters
+
+Style/Documentation:
+  Enabled: false
+  StyleGuide: http://relaxed.ruby.style/#styledocumentation
+
+Style/DotPosition:
+  Enabled: false
+  StyleGuide: http://relaxed.ruby.style/#styledotposition
+
+Style/MultilineBlockChain:
+  Enabled: false
+  StyleGuide: http://relaxed.ruby.style/#stylemultilineblockchain
 
 # Github's code views fit 101 character without horizontal scrolling
 Metrics/LineLength:
@@ -33,5 +46,8 @@ Metrics/MethodLength:
 Metrics/AbcSize:
   Max: 30
 
-Style/Documentation:
+Rails:
+  Enabled: true
+
+RSpec/DescribedClass:
   Enabled: false
