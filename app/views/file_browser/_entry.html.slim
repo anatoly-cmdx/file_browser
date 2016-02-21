@@ -1,0 +1,13 @@
+- href_root = @route_prefix
+- entry_icon = entry[:dir] ? 'fa-folder-o' : 'fa-file-text-o'
+
+tr.directory_entry
+  td
+    i class="fa fa-fw -o #{entry_icon}"
+    - if entry[:dir]
+      a href="#{href_root}/#{entry[:path]}" = entry[:name]
+    - else
+      = entry[:name]
+  td class="text-right"
+    - unless entry[:dir]
+      = number_to_human_size entry[:size]

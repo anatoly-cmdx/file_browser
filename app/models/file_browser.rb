@@ -1,6 +1,6 @@
 class FileBrowser
-  include ActiveModel::Model
-  DIRECTORY_ROOT = Pathname("#{Rails.root}/public")
+  DIRECTORY_ROOT = 'public'
+  ROOT_PATH = Pathname("#{Rails.root}/#{DIRECTORY_ROOT}")
 
   # Returns directory entries (folders and files) for a given path
   def self.browse(path = '')
@@ -8,7 +8,7 @@ class FileBrowser
     raise ArgumentError, 'Absolute path is not allowed' if %r{^\/} =~ relative_path
     raise ArgumentError, 'Traversing to parent folder is not allowed' if /\.\./ =~ relative_path
 
-    directory = DIRECTORY_ROOT + relative_path
+    directory = ROOT_PATH + relative_path
     raise Exceptions::PathNotFoundError, "Path not found: #{directory}" unless Dir.exist? directory
 
     sort_directory_entries directory.children
@@ -20,10 +20,11 @@ class FileBrowser
     entries.
       map { |entry|
         {
-          path: entry.relative_path_from(DIRECTORY_ROOT).to_s,
+          path: entry.relative_path_from(ROOT_PATH).to_s,
           dir: entry.directory?,
           ord: entry.file? ? 1 : 0, # for sorting only
-          name: entry.basename.to_s
+          name: entry.basename.to_s,
+          size: entry.size
         }
       }.
       sort { |a, b|

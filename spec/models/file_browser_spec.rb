@@ -1,4 +1,5 @@
 RSpec.describe FileBrowser, type: :model do
+  let(:path_root) { FileBrowser::ROOT_PATH }
   let(:path_absolute) { '/absolute/path' }
   let(:path_refs_parent) { '../log' }
   let(:path_not_exists) { 'directory_not_exists' }
@@ -22,7 +23,7 @@ RSpec.describe FileBrowser, type: :model do
     end
 
     context 'with "root" directory' do
-      let(:entries_count) { Dir.glob("#{FileBrowser::DIRECTORY_ROOT}/*").size }
+      let(:entries_count) { Dir.glob("#{path_root}/*").size }
 
       it 'returns array of directory entries' do
         expect(FileBrowser.browse(root).size).to eq entries_count
@@ -30,7 +31,7 @@ RSpec.describe FileBrowser, type: :model do
     end
 
     context 'with subfolder' do
-      let(:entries_count) { Dir.glob("#{FileBrowser::DIRECTORY_ROOT}/#{subfolder}/*").size }
+      let(:entries_count) { Dir.glob("#{path_root}/#{subfolder}/*").size }
 
       it 'returns array of directory entries' do
         expect(FileBrowser.browse(subfolder).size).to eq entries_count

@@ -1,0 +1,31 @@
+- icon_parent = 'fa fa-fw fa-folder-open'
+- icon_current = 'fa fa-fw fa-folder-open-o'
+- href_root = @route_prefix
+- path_entries = @path.to_s.split(/\//)
+- directory_parents = path_entries[0..-2]
+- current_directory = path_entries.last
+- directory_root_name = 'ROOT'
+
+.row
+  .col-md-12
+    ul.breadcrumb
+      / Root directory
+      li
+        - if @path
+          i class="#{icon_parent}"
+          a href="#{href_root}"
+            = directory_root_name
+        - else
+          i class="#{icon_current}"
+          = directory_root_name
+      / Parents of current directory
+      - directory_parents.each_with_index do |path_entry, i|
+        li
+          i class="#{icon_parent}"
+          a href="#{href_root}/#{directory_parents[0..i].join('/')}"
+            = path_entry
+      / Current directory
+      - if current_directory
+        li.active
+          i class="#{icon_current}"
+          = current_directory

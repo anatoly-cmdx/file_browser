@@ -1,0 +1,13 @@
+.section
+  .container
+    .col-md-2
+    .col-md-8
+      .row
+        .col-md-12
+          h1 File Browser
+      .row
+        .col-md-12 Simple browser on Rails, React and Bootstrap
+      hr
+      = render 'breadcrumbs', directory: @directory, entries: @entries
+      = render 'entries', entries: @entries
+    .col-md-2
