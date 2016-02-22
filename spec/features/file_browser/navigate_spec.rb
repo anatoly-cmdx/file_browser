@@ -31,7 +31,7 @@ feature 'User navigates to a directory and sees its contents', js: true do
 
   scenario 'User navigates to an empty directory' do
     visit file_browser_path(empty_folder)
-    expect(page).to_not have_css('.directory_entry')
+    expect(page).not_to have_css('.directory_entry')
   end
 
   scenario 'User can not navigate to a non-existent folder' do

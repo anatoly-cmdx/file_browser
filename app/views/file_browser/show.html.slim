@@ -9,5 +9,7 @@
         .col-md-12 Simple browser on Rails, React and Bootstrap
       hr
       = render 'breadcrumbs', directory: @directory, entries: @entries
-      = render 'entries', entries: @entries
+      = react_component 'FileBrowserDirectory', \
+                        { entries: @entries, href_root: @route_prefix }, \
+                        { prerender: true }
     .col-md-2

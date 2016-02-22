@@ -28,6 +28,9 @@ gem 'twitter-bootstrap-rails'
 # Slim templates generator for Rails
 gem 'slim-rails'
 
+# Ruby gem for automatically transforming JSX and using React in Rails.
+gem 'react-rails', '~> 1.6.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

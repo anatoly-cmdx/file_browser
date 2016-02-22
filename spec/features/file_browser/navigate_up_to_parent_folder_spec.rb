@@ -7,6 +7,9 @@ feature 'User navigates up to a parent directory', js: true do
 
   scenario 'User can navigate up to any parent folder from a subfolder using breadcrumbs' do
     visit file_browser_path(level4_subdirectory)
+
+    save_page
+
     within '.breadcrumb' do
       expect(page).to have_content 'ROOT'
       expect(page).to have_content 'subfolder'
@@ -38,7 +41,7 @@ feature 'User navigates up to a parent directory', js: true do
   scenario 'User can not navigate higher then the root directory' do
     visit file_browser_root_path
     within '.breadcrumb' do
-      expect(page).to_not have_link('ROOT')
+      expect(page).not_to have_link('ROOT')
     end
   end
 end

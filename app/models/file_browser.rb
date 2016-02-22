@@ -1,5 +1,5 @@
 class FileBrowser
-  DIRECTORY_ROOT = 'public'
+  DIRECTORY_ROOT = 'public'.freeze
   ROOT_PATH = Pathname("#{Rails.root}/#{DIRECTORY_ROOT}")
 
   # Returns directory entries (folders and files) for a given path
